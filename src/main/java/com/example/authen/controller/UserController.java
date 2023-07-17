@@ -36,7 +36,7 @@ public class UserController {
     }
 
 
-    @DeleteMapping("/delete/{id}")
+    @DeleteMapping("/{id}")
     @PreAuthorize("hasAthority('ROLE_ADMIN')")
     public String delete(@PathVariable Long id) {
         service.deleteUserById(id);
@@ -52,7 +52,7 @@ public class UserController {
     }
 
 
-    @GetMapping("/users/{id}")
+    @GetMapping("/{id}")
     @PreAuthorize("hasAuthority('ROLE_USER')")
     Optional<User> getById(@PathVariable Long id) {
         Optional<User> userById = service.getUserById(id);

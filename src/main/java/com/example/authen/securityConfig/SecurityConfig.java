@@ -34,11 +34,11 @@ public class SecurityConfig {
 @Bean
 public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
     return http.csrf().disable()
-            .authorizeHttpRequests().requestMatchers("/api/create","/api/login").permitAll()
+            .authorizeHttpRequests().requestMatchers("/api/create").permitAll()
             .and().authorizeHttpRequests()
-            .requestMatchers("/api/users/id","/api/all","/api/delete/id","/api/edit")
+            .requestMatchers("/api/**")
             .authenticated()
-            .and().build();
+            .and().formLogin().and().build();
 
 }
 
